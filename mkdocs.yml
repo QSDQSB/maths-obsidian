@@ -33,6 +33,9 @@ markdown_extensions:
   - codehilite:
       guess_lang: false
       linenums: false
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - footnotes
   - meta
   - def_list
