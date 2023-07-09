@@ -20,4 +20,6 @@ jobs:
       - run: pip install mkdocs-material
       - run: pip install mkdocs-exclude
       - run: pip install mkdocs-roamlinks-plugin
+      - run: pip install mkdocs-autolinks-plugin
+      - run: pip install mkdocs python-markdown-math
       - run: mkdocs gh-deploy --force

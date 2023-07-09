@@ -47,11 +47,15 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tasklist
   - pymdownx.tilde
+  - md_in_html
+  - pymdownx.keys
+  - pymdownx.mark
+  - mdx_math
 plugins:
   - search
   - tags
   - roamlinks 
-    #- autolinks 
+  - autolinks
   - exclude:
       glob:
         - "*.tmp"
@@ -63,6 +67,7 @@ extra_javascript:
   - javascripts/katex.js 
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
