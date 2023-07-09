@@ -1,9 +1,7 @@
 #ComplexAnalysis 
 
-```ad-theorem
-title: Liouville's Theorem
-Let $f : \mathbb{C}\to\mathbb{C}$ be an [[entire]] function. If f is **bounded** then it is constant.
-```
+??? theorem "Liouville's Theorem"
+    Let $f : \mathbb{C}\to\mathbb{C}$ be an [[entire]] function. If f is **bounded** then it is constant.
 ^theorem
 
 ## Proof

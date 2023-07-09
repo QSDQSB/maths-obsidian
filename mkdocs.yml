@@ -18,6 +18,10 @@ theme:
     - navigation.instant.prefetch
     - tabs
     - header.autohide
+  icon:
+    admonition:
+      theorem: material/book-arrow-left-outline
+      algorithm: material/book-cog-outline
 markdown_extensions: 
   - attr_list # https://squidfunk.github.io/mkdocs-material/reference/images/
   - pymdownx.tabbed  # https://squidfunk.github.io/mkdocs-material/reference/content-tabs/
