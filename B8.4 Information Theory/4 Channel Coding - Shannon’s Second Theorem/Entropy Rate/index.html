@@ -1,0 +1,4792 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Discrete%20Memoryless%20Channel/">
+      
+      
+        <link rel="next" href="../Maximal%20Probability%20of%20Error%20and%20Arithmetic%20Error/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+    
+    
+      
+        <title>Entropy Rate - QSD.Maths.Obsidian</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--theorem:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.09 20c.12.72.37 1.39.72 2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9.09c-.33-.05-.66-.09-1-.09-.34 0-.67.04-1 .09V4h-5v8l-2.5-2.25L8 12V4H6v16h7.09M18 18v-2l-3 3 3 3v-2h4v-2h-4Z"/></svg>');--md-admonition-icon--algorithm:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 4h-5v8l-2.5-2.25L8 12V4H6v16h6.08c.1.71.31 1.38.61 2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.08c-.33-.05-.66-.08-1-.08-.34 0-.67.03-1 .08V4m5.8 16.4c.1 0 .1.1 0 .2l-1 1.7c-.1.1-.2.1-.3.1l-1.2-.4c-.3.2-.5.3-.8.5l-.2 1.3c0 .1-.1.2-.2.2h-2c-.1 0-.2-.1-.3-.2l-.2-1.3c-.3-.1-.6-.3-.8-.5l-1.2.5c-.1 0-.2 0-.3-.1l-1-1.7c-.1-.1 0-.2.1-.3l1.1-.8v-1l-1.1-.8c-.1-.1-.1-.2-.1-.3l1-1.7c.1-.1.2-.1.3-.1l1.2.5c.3-.2.5-.3.8-.5l.2-1.3c0-.1.1-.2.3-.2h2c.1 0 .2.1.2.2l.2 1.3c.3.1.6.3.9.5l1.2-.5c.1 0 .3 0 .3.1l1 1.7c.1.1 0 .2-.1.3l-1.1.8v1l1.1.8M20.5 19c0-.8-.7-1.5-1.5-1.5s-1.5.7-1.5 1.5.7 1.5 1.5 1.5 1.5-.7 1.5-1.5Z"/></svg>');}</style>
+
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#infotheory" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="QSD.Maths.Obsidian" class="md-header__button md-logo" aria-label="QSD.Maths.Obsidian" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            QSD.Maths.Obsidian
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Entropy Rate
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="QSD.Maths.Obsidian" class="md-nav__button md-logo" aria-label="QSD.Maths.Obsidian" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    QSD.Maths.Obsidian
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        QSD.MATHS.OBSIDIAN
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          A2 Complex Analysis and Metric Spaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          A2 Complex Analysis and Metric Spaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Chapter 1 Metric Spaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 1 Metric Spaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%201%20Metric%20Spaces/2-adic%20Metric/" class="md-nav__link">
+        2 adic Metric
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%201%20Metric%20Spaces/Bounded/" class="md-nav__link">
+        Bounded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%201%20Metric%20Spaces/Closed%20ball/" class="md-nav__link">
+        Closed ball
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%201%20Metric%20Spaces/Hamming%20Distance/" class="md-nav__link">
+        Hamming Distance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%201%20Metric%20Spaces/Metric%20Space/" class="md-nav__link">
+        Metric Space
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%201%20Metric%20Spaces/Norm/" class="md-nav__link">
+        Norm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%201%20Metric%20Spaces/Open%20ball/" class="md-nav__link">
+        Open ball
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%201%20Metric%20Spaces/Projective%20Space/" class="md-nav__link">
+        Projective Space
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Chapter 2 Limits and Continuity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2 Limits and Continuity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%202%20Limits%20and%20Continuity/Continuous/" class="md-nav__link">
+        Continuous
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%202%20Limits%20and%20Continuity/L1-norm/" class="md-nav__link">
+        L1 norm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%202%20Limits%20and%20Continuity/Lp-norm/" class="md-nav__link">
+        Lp norm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%202%20Limits%20and%20Continuity/Sup-norm/" class="md-nav__link">
+        Sup norm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%202%20Limits%20and%20Continuity/Uniformly%20Continuous/" class="md-nav__link">
+        Uniformly Continuous
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Chapter 3 Isometries, Homeomorphisms and Equivalence
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3 Isometries, Homeomorphisms and Equivalence
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%203%20Isometries%2C%20Homeomorphisms%20and%20Equivalence/Equivalent%20Metrics/" class="md-nav__link">
+        Equivalent Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%203%20Isometries%2C%20Homeomorphisms%20and%20Equivalence/Homeomorphism/" class="md-nav__link">
+        Homeomorphism
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%203%20Isometries%2C%20Homeomorphisms%20and%20Equivalence/Isometry/" class="md-nav__link">
+        Isometry
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Chapter 4 Open and Closed Sets
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 4 Open and Closed Sets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%204%20Open%20and%20Closed%20Sets/Closed/" class="md-nav__link">
+        Closed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%204%20Open%20and%20Closed%20Sets/Neighbourhood/" class="md-nav__link">
+        Neighbourhood
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%204%20Open%20and%20Closed%20Sets/Open/" class="md-nav__link">
+        Open
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Chapter 5 Interiors, closures, limit points
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 5 Interiors, closures, limit points
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%205%20Interiors%2C%20closures%2C%20limit%20points/Boundary/" class="md-nav__link">
+        Boundary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%205%20Interiors%2C%20closures%2C%20limit%20points/Closure/" class="md-nav__link">
+        Closure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%205%20Interiors%2C%20closures%2C%20limit%20points/Dense/" class="md-nav__link">
+        Dense
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%205%20Interiors%2C%20closures%2C%20limit%20points/Interior/" class="md-nav__link">
+        Interior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%205%20Interiors%2C%20closures%2C%20limit%20points/Limit%20Point/" class="md-nav__link">
+        Limit Point
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          Chapter 6 Completeness
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 6 Completeness
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%206%20Completeness/Cantor%27s%20Intersection%20Theorem/" class="md-nav__link">
+        Cantor's Intersection Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%206%20Completeness/Cauchy/" class="md-nav__link">
+        Cauchy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%206%20Completeness/Complete/" class="md-nav__link">
+        Complete
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%206%20Completeness/Contraction%20Mapping%20Theorem/" class="md-nav__link">
+        Contraction Mapping Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%206%20Completeness/Contraction/" class="md-nav__link">
+        Contraction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%206%20Completeness/Lipschitz/" class="md-nav__link">
+        Lipschitz
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Chapter 7 Connectedness and path connectedness
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 7 Connectedness and path connectedness
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%207%20Connectedness%20and%20path-connectedness/Connected%20Component/" class="md-nav__link">
+        Connected Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%207%20Connectedness%20and%20path-connectedness/Connected/" class="md-nav__link">
+        Connected
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%207%20Connectedness%20and%20path-connectedness/Path-Connected/" class="md-nav__link">
+        Path Connected
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%207%20Connectedness%20and%20path-connectedness/Path/" class="md-nav__link">
+        Path
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+          Chapter 8 Sequential compactness
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 8 Sequential compactness
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%208%20Sequential%20compactness/Product%20Space/" class="md-nav__link">
+        Product Space
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%208%20Sequential%20compactness/Sequential%20Compactness/" class="md-nav__link">
+        Sequential Compactness
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%208%20Sequential%20compactness/Totally%20Bounded/" class="md-nav__link">
+        Totally Bounded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%208%20Sequential%20compactness/Uniformly%20Bounded/" class="md-nav__link">
+        Uniformly Bounded
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+          Chapter 9 Compactness
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 9 Compactness
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%209%20Compactness/Compact/" class="md-nav__link">
+        Compact
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%209%20Compactness/Heine-Borel%20theorem/" class="md-nav__link">
+        Heine Borel theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%209%20Compactness/Open%20Cover/" class="md-nav__link">
+        Open Cover
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Chapter%209%20Compactness/Subcover/" class="md-nav__link">
+        Subcover
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+          Complex Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Complex Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/%F0%9F%A5%BA%E2%98%B9%EF%B8%8F%F0%9F%98%B6%E2%80%8D%F0%9F%8C%AB%EF%B8%8FCA-TODO-BEFORE-THE-EXAM/" class="md-nav__link">
+        🥺☹️😶‍🌫️CA TODO BEFORE THE EXAM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_2" id="__nav_2_10_2_label" tabindex="0">
+          1 Geometry and Topology of the Complex Plane
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_2">
+          <span class="md-nav__icon md-icon"></span>
+          1 Geometry and Topology of the Complex Plane
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/1%20Geometry%20and%20Topology%20of%20the%20Complex%20Plane/Circline/" class="md-nav__link">
+        Circline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/1%20Geometry%20and%20Topology%20of%20the%20Complex%20Plane/Complex%20projective%20line/" class="md-nav__link">
+        Complex projective line
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/1%20Geometry%20and%20Topology%20of%20the%20Complex%20Plane/M%C3%B6bius%20map/" class="md-nav__link">
+        Möbius map
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/1%20Geometry%20and%20Topology%20of%20the%20Complex%20Plane/Stereographic%20projection/" class="md-nav__link">
+        Stereographic projection
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_3" id="__nav_2_10_3_label" tabindex="0">
+          10 The Argument Principle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_3">
+          <span class="md-nav__icon md-icon"></span>
+          10 The Argument Principle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/10%20The%20Argument%20Principle/Argument%20Principle/" class="md-nav__link">
+        Argument Principle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/10%20The%20Argument%20Principle/Inverse%20Function%20Theorem/" class="md-nav__link">
+        Inverse Function Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/10%20The%20Argument%20Principle/Open%20Mapping%20Theorem/" class="md-nav__link">
+        Open Mapping Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/10%20The%20Argument%20Principle/Rouche%27s%20Theorem/" class="md-nav__link">
+        Rouche's Theorem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_4" id="__nav_2_10_4_label" tabindex="0">
+          11 The Residue Theorem
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_4">
+          <span class="md-nav__icon md-icon"></span>
+          11 The Residue Theorem
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/11%20The%20Residue%20Theorem/Jordan%27s%20Lemma/" class="md-nav__link">
+        Jordan's Lemma
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/11%20The%20Residue%20Theorem/Residue%20Theorem/" class="md-nav__link">
+        Residue Theorem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_5" id="__nav_2_10_5_label" tabindex="0">
+          12 Conformal Transformations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_5">
+          <span class="md-nav__icon md-icon"></span>
+          12 Conformal Transformations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/12%20Conformal%20Transformations/Conformal/" class="md-nav__link">
+        Conformal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/12%20Conformal%20Transformations/Conformally%20Equivalent/" class="md-nav__link">
+        Conformally Equivalent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/12%20Conformal%20Transformations/Rieman%27s%20Mapping%20Theorem/" class="md-nav__link">
+        Rieman's Mapping Theorem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_6" id="__nav_2_10_6_label" tabindex="0">
+          3 Complex Differentiability
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_6">
+          <span class="md-nav__icon md-icon"></span>
+          3 Complex Differentiability
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/3%20Complex%20Differentiability/Cauchy-Riemann%20equations/" class="md-nav__link">
+        Cauchy Riemann equations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/3%20Complex%20Differentiability/Complex%20Differentiable/" class="md-nav__link">
+        Complex Differentiable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/3%20Complex%20Differentiability/Harmonic/" class="md-nav__link">
+        Harmonic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/3%20Complex%20Differentiability/Holomorphic/" class="md-nav__link">
+        Holomorphic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/3%20Complex%20Differentiability/Radius%20of%20Convergence/" class="md-nav__link">
+        Radius of Convergence
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/3%20Complex%20Differentiability/The%20Exponential%20and%20Trigonometric%20Functions%20on%20Complex%20Plane/" class="md-nav__link">
+        The Exponential and Trigonometric Functions on Complex Plane
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/3%20Complex%20Differentiability/Wirtinger%20derivative/" class="md-nav__link">
+        Wirtinger derivative
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_7" id="__nav_2_10_7_label" tabindex="0">
+          4 Branch Cuts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_7">
+          <span class="md-nav__icon md-icon"></span>
+          4 Branch Cuts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/4%20Branch%20Cuts/Branch%20Cut/" class="md-nav__link">
+        Branch Cut
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/4%20Branch%20Cuts/Branch%20Point/" class="md-nav__link">
+        Branch Point
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/4%20Branch%20Cuts/Branch/" class="md-nav__link">
+        Branch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/4%20Branch%20Cuts/Complex%20Logarithm/" class="md-nav__link">
+        Complex Logarithm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_8" id="__nav_2_10_8_label" tabindex="0">
+          5 Paths and Integration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_8">
+          <span class="md-nav__icon md-icon"></span>
+          5 Paths and Integration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Complex%20Chain%20Rule/" class="md-nav__link">
+        Complex Chain Rule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Complex%20Fundamental%20Theorem%20of%20Calculus/" class="md-nav__link">
+        Complex Fundamental Theorem of Calculus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Complex%20Path%20Integral/" class="md-nav__link">
+        Complex Path Integral
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Complex%20Riemann%20Integrable/" class="md-nav__link">
+        Complex Riemann Integrable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Equivalent%20Path/" class="md-nav__link">
+        Equivalent Path
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Estimation%20Lemma/" class="md-nav__link">
+        Estimation Lemma
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Length/" class="md-nav__link">
+        Length
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Opposite%20Path/" class="md-nav__link">
+        Opposite Path
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Path%20Differentiable/" class="md-nav__link">
+        Path Differentiable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Path%27s%20Chain%20Rule/" class="md-nav__link">
+        Path's Chain Rule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Primitive/" class="md-nav__link">
+        Primitive
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/5%20Paths%20and%20Integration/Reparametrization/" class="md-nav__link">
+        Reparametrization
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_9" id="__nav_2_10_9_label" tabindex="0">
+          6 Winding Numbers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_9">
+          <span class="md-nav__icon md-icon"></span>
+          6 Winding Numbers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/6%20Winding%20Numbers/Analytic/" class="md-nav__link">
+        Analytic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/6%20Winding%20Numbers/Inside/" class="md-nav__link">
+        Inside
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/6%20Winding%20Numbers/Winding%20Number/" class="md-nav__link">
+        Winding Number
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_10" id="__nav_2_10_10_label" tabindex="0">
+          7 Cauchy's Theorem
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_10">
+          <span class="md-nav__icon md-icon"></span>
+          7 Cauchy's Theorem
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/7%20Cauchy%27s%20Theorem/Cauchy%27s%20Integral%20Formula/" class="md-nav__link">
+        Cauchy's Integral Formula
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/7%20Cauchy%27s%20Theorem/Cauchy%27s%20Theorem/" class="md-nav__link">
+        Cauchy's Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/7%20Cauchy%27s%20Theorem/Cauchy%27s%20theorem%20for%20a%20star-like%20domain/" class="md-nav__link">
+        Cauchy's theorem for a star like domain
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/7%20Cauchy%27s%20Theorem/Cauchy%27s%20theorem%20for%20a%20triangle/" class="md-nav__link">
+        Cauchy's theorem for a triangle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/7%20Cauchy%27s%20Theorem/Deformation%20Theorem/" class="md-nav__link">
+        Deformation Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/7%20Cauchy%27s%20Theorem/Entire/" class="md-nav__link">
+        Entire
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/7%20Cauchy%27s%20Theorem/Liouville%27s%20theorem/" class="md-nav__link">
+        Liouville's theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/7%20Cauchy%27s%20Theorem/Morera%27s%20Theorem/" class="md-nav__link">
+        Morera's Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/7%20Cauchy%27s%20Theorem/Riemann%27s%20Removable%20Singularity%20Theorem/" class="md-nav__link">
+        Riemann's Removable Singularity Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/7%20Cauchy%27s%20Theorem/Taylor%27s%20Theorem/" class="md-nav__link">
+        Taylor's Theorem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_11" id="__nav_2_10_11_label" tabindex="0">
+          8 The Identity Theorem, Isolated Zeroes and Singularities
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_11">
+          <span class="md-nav__icon md-icon"></span>
+          8 The Identity Theorem, Isolated Zeroes and Singularities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/8%20The%20Identity%20Theorem%2C%20Isolated%20Zeroes%20and%20Singularities/Identity%20Theorem/" class="md-nav__link">
+        Identity Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/8%20The%20Identity%20Theorem%2C%20Isolated%20Zeroes%20and%20Singularities/Laurent%27s%20Theorem/" class="md-nav__link">
+        Laurent's Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/8%20The%20Identity%20Theorem%2C%20Isolated%20Zeroes%20and%20Singularities/Meromorphic/" class="md-nav__link">
+        Meromorphic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/8%20The%20Identity%20Theorem%2C%20Isolated%20Zeroes%20and%20Singularities/Pole/" class="md-nav__link">
+        Pole
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/8%20The%20Identity%20Theorem%2C%20Isolated%20Zeroes%20and%20Singularities/Principal%20Part/" class="md-nav__link">
+        Principal Part
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/8%20The%20Identity%20Theorem%2C%20Isolated%20Zeroes%20and%20Singularities/Removable%20Singularity/" class="md-nav__link">
+        Removable Singularity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/8%20The%20Identity%20Theorem%2C%20Isolated%20Zeroes%20and%20Singularities/Residue/" class="md-nav__link">
+        Residue
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/8%20The%20Identity%20Theorem%2C%20Isolated%20Zeroes%20and%20Singularities/Singularity/" class="md-nav__link">
+        Singularity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_12" id="__nav_2_10_12_label" tabindex="0">
+          9 Homotopies, Simple Connected Domains and Cauchy's Theorem
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10_12">
+          <span class="md-nav__icon md-icon"></span>
+          9 Homotopies, Simple Connected Domains and Cauchy's Theorem
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/9%20Homotopies%2C%20Simple-Connected%20Domains%20and%20Cauchy%27s%20Theorem/Homotopic/" class="md-nav__link">
+        Homotopic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/9%20Homotopies%2C%20Simple-Connected%20Domains%20and%20Cauchy%27s%20Theorem/Simply-Connected/" class="md-nav__link">
+        Simply Connected
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../A2%20Complex%20Analysis%20and%20Metric%20Spaces/Complex%20Analysis/9%20Homotopies%2C%20Simple-Connected%20Domains%20and%20Cauchy%27s%20Theorem/Zero/" class="md-nav__link">
+        Zero and Order of f
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          B8.4 Information Theory
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          B8.4 Information Theory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          1 Entropy, Divergence and Mutual Information
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          1 Entropy, Divergence and Mutual Information
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Conditional%20Divergence/" class="md-nav__link">
+        Conditional Divergence
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Conditional%20Entropy/" class="md-nav__link">
+        Conditional Entropy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Conditional%20Mutual%20Information/" class="md-nav__link">
+        Conditional Mutual Information
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Divergence%20%28Info%20Theory%29/" class="md-nav__link">
+        Divergence (Info Theory)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Entropy/" class="md-nav__link">
+        Entropy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Fano%27s%20Inequality/" class="md-nav__link">
+        Fano's Inequality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Gibbs%E2%80%99%20Inequality/" class="md-nav__link">
+        Gibbs’ Inequality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Jensen%27s%20Inequality/" class="md-nav__link">
+        Jensen's Inequality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Log%20Sum%20Inequality/" class="md-nav__link">
+        Log Sum Inequality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Mutual%20Information/" class="md-nav__link">
+        Mutual Information
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1%20Entropy%2C%20Divergence%20and%20Mutual%20Information/Shannon%20Information/" class="md-nav__link">
+        Shannon Information
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          2 Typical Sequences
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          2 Typical Sequences
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2%20Typical%20Sequences/Asymptotic%20Equipartition%20Property/" class="md-nav__link">
+        Asymptotic Equipartition Property
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2%20Typical%20Sequences/Shannon%27s%20First%20Theorem/" class="md-nav__link">
+        Shannon's First Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2%20Typical%20Sequences/Typical%20Sequences/" class="md-nav__link">
+        Typical Sequences
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          3 Optimal Codes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          3 Optimal Codes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3%20Optimal%20Codes/Classes%20of%20Codes/" class="md-nav__link">
+        Classes of Codes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3%20Optimal%20Codes/Elias%27%20Code/" class="md-nav__link">
+        Elias' Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3%20Optimal%20Codes/Fano%27s%20Code/" class="md-nav__link">
+        Fano's Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3%20Optimal%20Codes/Huffman%20Code/" class="md-nav__link">
+        Huffman Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3%20Optimal%20Codes/Kraft-McMillan%20inequality/" class="md-nav__link">
+        Kraft McMillan inequality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3%20Optimal%20Codes/Optimal%20Codes/" class="md-nav__link">
+        Optimal Codes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3%20Optimal%20Codes/Shannon%27s%20Code/" class="md-nav__link">
+        Shannon's Code
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          4 Channel Coding   Shannon’s Second Theorem
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          4 Channel Coding   Shannon’s Second Theorem
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Achievable/" class="md-nav__link">
+        Achievable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Channel%20Capacity/" class="md-nav__link">
+        Channel Capacity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Discrete%20Memoryless%20Channel/" class="md-nav__link">
+        Discrete Memoryless Channel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Entropy Rate
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Maximal%20Probability%20of%20Error%20and%20Arithmetic%20Error/" class="md-nav__link">
+        Maximal Probability of Error and Arithmetic Error
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Rate%20of%20the%20%28m%2Cn%29-Code/" class="md-nav__link">
+        Rate of the (m,n) Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Shannon%E2%80%99s%20Second%20Theorem/" class="md-nav__link">
+        Shannon’s Second Theorem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Fourier Series and PDEs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Fourier Series and PDEs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/Fourier%20Series%20and%20PDEs/" class="md-nav__link">
+        Fourier Series and PDEs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          2 Fourier Series
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          2 Fourier Series
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/2%20Fourier%20Series/Even-odd%20Extension/" class="md-nav__link">
+        Even odd Extension
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/2%20Fourier%20Series/Even-odd%20Functions/" class="md-nav__link">
+        Even odd Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/2%20Fourier%20Series/Fourier%20Convergence%20Theorem/" class="md-nav__link">
+        Fourier Convergence Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/2%20Fourier%20Series/Fourier%20Cosine%20and%20Sine%20Series/" class="md-nav__link">
+        Fourier Cosine and Sine Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/2%20Fourier%20Series/Fourier%20Series%20any%20period/" class="md-nav__link">
+        Fourier Series any period
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/2%20Fourier%20Series/Fourier%20Series/" class="md-nav__link">
+        Fourier Series For Functions of Period 2$\Large\pi$
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/2%20Fourier%20Series/Gibb%27s%20Phenomenon/" class="md-nav__link">
+        Gibb's Phenomenon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/2%20Fourier%20Series/Orthogonality%20Relations/" class="md-nav__link">
+        Orthogonality Relations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/2%20Fourier%20Series/Periodic%20Functions/" class="md-nav__link">
+        Periodic Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/2%20Fourier%20Series/Rate%20of%20Convergence/" class="md-nav__link">
+        Rate of Convergence
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          3 Heat Equation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          3 Heat Equation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/Derivation%20of%201-D%20Heat%20Equation/" class="md-nav__link">
+        Derivation of 1 D Heat Equation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/Dirichlet%20Boundary%20Condition/" class="md-nav__link">
+        Dirichlet Boundary Condition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/Fourier%27s%20Law/" class="md-nav__link">
+        Fourier's Law
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/Fourier%27s%20Method/" class="md-nav__link">
+        Fourier's Method
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/Heat%20Equation%20with%20Non-Zero%20Temperature%20Conditions/" class="md-nav__link">
+        Heat Equation with Non Zero Temperature Conditions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/IBVP%20-%20Heat/" class="md-nav__link">
+        IBVP   Heat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/Inhomogeneous%20Heat%20Equation/" class="md-nav__link">
+        Inhomogeneous Heat Equation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/Leibniz%27s%20Integral%20Rule/" class="md-nav__link">
+        Leibniz's Integral Rule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/Neumann%20Boundary%20Condition/" class="md-nav__link">
+        Neumann Boundary Condition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/Robin%20Boundary%20Condition/" class="md-nav__link">
+        Robin Boundary Condition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/3%20Heat%20Equation/Uniqueness%20Theorem/" class="md-nav__link">
+        Uniqueness Theorem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+          4 Wave Equation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          4 Wave Equation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/4%20Wave%20Equation/Derivation%20of%201-D%20Wave%20Equation/" class="md-nav__link">
+        Derivation of 1 D Wave Equation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+          5 Laplace's Equation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          5 Laplace's Equation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/5%20Laplace%27s%20Equation/A%20BVP%20for%20Poisson%27s%20Equation/" class="md-nav__link">
+        A BVP for Poisson's Equation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/5%20Laplace%27s%20Equation/Derivation%20of%203-D%20Heat%20Equation/" class="md-nav__link">
+        Derivation of 3 D Heat Equation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/5%20Laplace%27s%20Equation/Laplace%27s%20BVP%20for%20Poisson%27s%20Equation/" class="md-nav__link">
+        Laplace's BVP for Poisson's Equation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/5%20Laplace%27s%20Equation/Laplace%27s%20BVP%20in%20Cartesian%20Coordinates/" class="md-nav__link">
+        Laplace's BVP in Cartesian Coordinates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/5%20Laplace%27s%20Equation/Laplace%27s%20BVP%20in%20Polar%20Coordinates/" class="md-nav__link">
+        Laplace's BVP in Polar Coordinates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/5%20Laplace%27s%20Equation/Poisson%27s%20Integral%20Formula/" class="md-nav__link">
+        Poisson's Integral Formula
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/5%20Laplace%27s%20Equation/Steady%202-D%20Heat%20Conduction/" class="md-nav__link">
+        Steady 2 D Heat Conduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/5%20Laplace%27s%20Equation/Steady%203-D%20Heat%20Conduction/" class="md-nav__link">
+        Steady 3 D Heat Conduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Fourier%20Series%20and%20PDEs/5%20Laplace%27s%20Equation/Uniqueness%20Theorem%20%28Laplace%29/" class="md-nav__link">
+        Uniqueness Theorem (Laplace)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Multivariable Calculus
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Multivariable Calculus
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/Derivative%20of%20Cross%20Products/" class="md-nav__link">
+        Derivative of Cross Products
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/Multivariable%20Calculus/" class="md-nav__link">
+        Multivariable Calculus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+          1 Multiple Integrals in 2D
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          1 Multiple Integrals in 2D
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/1%20Multiple%20Integrals%20in%202D/Change%20of%20Variables/" class="md-nav__link">
+        Change of Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/1%20Multiple%20Integrals%20in%202D/Jacobian/" class="md-nav__link">
+        Jacobian
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/1%20Multiple%20Integrals%20in%202D/Moment%20of%20Inertia/" class="md-nav__link">
+        Moment of Inertia
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/1%20Multiple%20Integrals%20in%202D/Parabolic%20Coordinates/" class="md-nav__link">
+        Parabolic Coordinates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/1%20Multiple%20Integrals%20in%202D/Plane%20Polar%20Coordinates/" class="md-nav__link">
+        Plane Polar Coordinates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/1%20Multiple%20Integrals%20in%202D/Scalar%20Field/" class="md-nav__link">
+        Scalar Field
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/1%20Multiple%20Integrals%20in%202D/Vector%20Field/" class="md-nav__link">
+        Vector Field
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+          2 Volume Integrals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          2 Volume Integrals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/2%20Volume%20Integrals/Change%20of%20Coordinates/" class="md-nav__link">
+        Change of Coordinates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/2%20Volume%20Integrals/Cylindrical%20Polar%20Coordinates/" class="md-nav__link">
+        Cylindrical Polar Coordinates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/2%20Volume%20Integrals/Median/" class="md-nav__link">
+        Median
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/2%20Volume%20Integrals/Spherical%20Polar%20Coordinates/" class="md-nav__link">
+        Spherical Polar Coordinates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/2%20Volume%20Integrals/Volume%20Integral/" class="md-nav__link">
+        Volume Integral
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+          3 Surface Integrals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          3 Surface Integrals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/3%20Surface%20Integrals/Solid%20Angle/" class="md-nav__link">
+        Solid Angle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/3%20Surface%20Integrals/Surface%20Area/" class="md-nav__link">
+        Surface Area
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/3%20Surface%20Integrals/Surface%20Integral/" class="md-nav__link">
+        Surface Integral
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/3%20Surface%20Integrals/Surface/" class="md-nav__link">
+        Surface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/3%20Surface%20Integrals/Tangent%20Plane/" class="md-nav__link">
+        Tangent Plane
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/3%20Surface%20Integrals/dS/" class="md-nav__link">
+        dS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+          4 Line Integrals & Conservative Fields
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          4 Line Integrals & Conservative Fields
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/4%20Line%20Integrals%20%26%20Conservative%20Fields/Arc%20Length/" class="md-nav__link">
+        Arc Length
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/4%20Line%20Integrals%20%26%20Conservative%20Fields/Conservative/" class="md-nav__link">
+        Conservative
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/4%20Line%20Integrals%20%26%20Conservative%20Fields/Curve/" class="md-nav__link">
+        Curve
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/4%20Line%20Integrals%20%26%20Conservative%20Fields/Line%20Integral/" class="md-nav__link">
+        Line Integral
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/4%20Line%20Integrals%20%26%20Conservative%20Fields/Potential/" class="md-nav__link">
+        Potential
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/4%20Line%20Integrals%20%26%20Conservative%20Fields/Simple/" class="md-nav__link">
+        Simple
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          5 Div Grad Curl
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          5 Div Grad Curl
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/5%20Div%20Grad%20Curl/2D-Curl/" class="md-nav__link">
+        2D Curl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/5%20Div%20Grad%20Curl/Curl/" class="md-nav__link">
+        Curl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/5%20Div%20Grad%20Curl/Del/" class="md-nav__link">
+        Del
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/5%20Div%20Grad%20Curl/Div%20Grad%20Curl/" class="md-nav__link">
+        Div Grad Curl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/5%20Div%20Grad%20Curl/Divergence/" class="md-nav__link">
+        Divergence
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/5%20Div%20Grad%20Curl/Gradient/" class="md-nav__link">
+        Gradient
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/5%20Div%20Grad%20Curl/Laplace%27s%20Equation/" class="md-nav__link">
+        Laplace's Equation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/5%20Div%20Grad%20Curl/Laplacian/" class="md-nav__link">
+        Laplacian
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/5%20Div%20Grad%20Curl/Orthonormal%20Basis/" class="md-nav__link">
+        Orthonormal Basis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+          6 Divergence Theorem & Stokes' Theorem
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_8">
+          <span class="md-nav__icon md-icon"></span>
+          6 Divergence Theorem & Stokes' Theorem
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/6%20Divergence%20Theorem%20%26%20Stokes%27%20Theorem/Divergence%20Theorem/" class="md-nav__link">
+        Divergence Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/6%20Divergence%20Theorem%20%26%20Stokes%27%20Theorem/Green%27s%20Theorem/" class="md-nav__link">
+        Green's Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/6%20Divergence%20Theorem%20%26%20Stokes%27%20Theorem/Stokes%27%20Theorem/" class="md-nav__link">
+        Stokes' Theorem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+          7 Gauss' Flux Theorem, Poisson's Equation and Gravity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_9">
+          <span class="md-nav__icon md-icon"></span>
+          7 Gauss' Flux Theorem, Poisson's Equation and Gravity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/7%20Gauss%27%20Flux%20Theorem%2C%20Poisson%27s%20Equation%20and%20Gravity/Gauss%27%20Flux%20Theorem/" class="md-nav__link">
+        Gauss' Flux Theorem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/7%20Gauss%27%20Flux%20Theorem%2C%20Poisson%27s%20Equation%20and%20Gravity/Gravitational%20Potential/" class="md-nav__link">
+        Gravitational Potential
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/7%20Gauss%27%20Flux%20Theorem%2C%20Poisson%27s%20Equation%20and%20Gravity/Poisson%27s%20Equation/" class="md-nav__link">
+        Poisson's Equation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+          Sheets
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_10">
+          <span class="md-nav__icon md-icon"></span>
+          Sheets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/Sheets/MVC_Sheet1/" class="md-nav__link">
+        MVC1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/Sheets/MVC_Sheet2/" class="md-nav__link">
+        MVC2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/Sheets/MVC_Sheet3/" class="md-nav__link">
+        MVC3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/Sheets/MVC_Sheet4/" class="md-nav__link">
+        MVC4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/Sheets/MVC_Sheet5/" class="md-nav__link">
+        MVC5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/Sheets/MVC_Sheet6/" class="md-nav__link">
+        MVC6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/Sheets/MVC_Sheet7/" class="md-nav__link">
+        MVC7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Multivariable%20Calculus/Sheets/MVC_Sheet8/" class="md-nav__link">
+        MVC8
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="infotheory">InfoTheory<a class="headerlink" href="#infotheory" title="Permanent link">#</a></h1>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.instant", "navigation.instant.prefetch", "tabs", "header.autohide"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../../javascripts/katex.js"></script>
+        
+      
+        
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+        
+      
+        
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+        
+      
+    
+  </body>
+</html>
